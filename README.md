@@ -1,6 +1,10 @@
 # Slutprojekt_Webbserver
-Jag ska göra en hemsida.
-Den ska vara fin.
-Jag ska skriva kod. Tror jag.
-Den ska ha get requests.
-Den ska ha post requests.
+
+Hemsidan ska handla om nånting.
+
+Jag vill använda monospace.
+svart, vit
+
+Användarnamn och koder sparas i databasen.
+
+app.js tar emot alla get och post requests. Skickar ut ejs och css filer.
