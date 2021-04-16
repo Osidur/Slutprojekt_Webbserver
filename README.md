@@ -3,7 +3,7 @@
 Hemsidan ska handla om nånting.
 
 Jag vill använda monospace.
-svart, vit
+Bruna earth-like färger. 
 
 Användarnamn och koder sparas i databasen.
 
