@@ -1,19 +1,33 @@
 # Slutprojekt_Webbserver
 
-Hemsidan ska vara ett forum om böcker där man kan diskutera med andra användare. Därför heter hemsidan BokDiskus.
+Hemsidan
+    Hemsidan ska vara ett forum om böcker där man kan diskutera med andra användare. Därför heter hemsidan BokDiskus.
 
-Timeolas new Roman för det är the roman text.
-Jag vill inte använda mig av färger. Dem ända färgerna ska vara vita bakgrunder och svarta borders.
-Jag ska använda Bootstrap för detta projekt. Det ska finnas en header-bar och content som visas i en ruta.
+Font
+    Timeolas new Roman för det är the roman text.
+Färg
+    Jag vill inte använda så mycket färg. De ända färgerna kanske blir röd för något potentiellt error medelande.
+Struktur
+    Jag ska använda Bootstrap för detta projekt. Det ska finnas en header-bar och all content visas i en ruta (se Homepage.png). För inlägg av användare kommer content-rutan att upprepas vertikalt. Med detta systemet kan jag enkelt lägga in mer content, i form av rutor, utan att ändra på den generella strukturen. Min header-bar kommer också vara enkelt att utöka så helt nya kategorier kommer inte vara svårt att implementera.
 
-Användarnamn, koder och inlägg på forumet sparas i databasen.
+    Sidor
+        Homepage
+            Här ska det finnas en introduktion till hemsidan.
+        Forum
+            Här ska alla användarnas inlägg finnas.
+        About
+            Här ska det finnas mer ingående info om hemsidan.
+        Login
+            Här ska det finnas Login fält. Användarnamn, lösenord.
 
-app.js tar emot alla get och post requests och skickar ut ejs och css filer.
+        About <-- Home --> Forum
+                   I
+                   V
+              Login/Logout
 
-About <-- Home --> Forum
-           I
-           V
-      Login/Logout
+Databas
+    Användarnamn, koder och inlägg på forumet sparas i databasen.
+    app.js tar emot alla get och post requests och skickar ut ejs och css filer.
 
 Persona.
     Berteel.
