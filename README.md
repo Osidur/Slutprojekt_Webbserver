@@ -8,7 +8,7 @@ Font
 Färg
     Jag vill inte använda så mycket färg. De ända färgerna kanske blir röd för något potentiellt error medelande.
 Struktur
-    Jag ska använda Bootstrap för detta projekt. Det ska finnas en header-bar och all content visas i en ruta (se Homepage.png). För inlägg av användare kommer content-rutan att upprepas vertikalt. Med detta systemet kan jag enkelt lägga in mer content, i form av rutor, utan att ändra på den generella strukturen. Min header-bar kommer också vara enkelt att utöka så helt nya kategorier kommer inte vara svårt att implementera.
+    Jag ska använda Bootstrap för detta projekt. Det ska finnas en header-bar och all content visas i en ruta (se Homepage.png). För inlägg av användare kommer content-rutan att upprepas vertikalt. Med detta systemet kan jag enkelt lägga in mer content i form av rutor utan att ändra på den generella strukturen. Min header-bar kommer också vara enkelt att utöka så helt nya kategorier kommer inte vara svårt att implementera.
 
     Sidor
         Homepage
