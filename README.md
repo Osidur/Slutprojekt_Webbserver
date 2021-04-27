@@ -31,7 +31,7 @@ Databas
 
 Persona.
     Berteel.
-    Persona läser böcker lite då o då. Hen är en hipster.
+    Persona läser böcker lite då o då. Hen är en hipster. Är så ensam att hen kommunicerar med vem som helst, till och med med främlingar på internet.
     20 åår.
     Kön är för mainstream och i dagens samhälle behöver man inte ha ett kön.
     Ögon? Check. Händer? Check.
