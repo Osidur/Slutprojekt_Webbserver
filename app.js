@@ -12,4 +12,4 @@ app.use(express.static(__dirname +"\\static\\"))
 app.get('/', (req, res) => res.render('home.ejs'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-app.get('/praxel', (req, res) => res.render(staticDir + "views\\praxel.ejs"))
+app.get('/praxel', (req, res) => res.render("views\\praxel.ejs"))
