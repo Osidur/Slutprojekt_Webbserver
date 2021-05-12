@@ -1,6 +1,7 @@
 const express = require('express')
 const databaseModule = require('./databaseModule')
 const UserRegisterModel = require('./UserRegisterModel')
+const FileUploadModel = require('./FileUploadModel')
 const app = express()
 const port = 3000
 const staticDir = __dirname + "\\static\\"
@@ -38,9 +39,19 @@ app.post('/register', function (req, res) {
     console.log(req.body.username);
     console.log(req.body.userpassword);
     console.log(" ")
-    UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
+    let user = UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
     databaseModule.storeElement(user)
-  //res.redirect('/');
+  res.redirect('/');
+})
+
+app.get('/file', (req, res) => res.render("file.ejs"))
+
+app.post('/file', function (req, res) {
+  let file = FileUploadModel.fileUpload(req.body.userfileupload)
+  databaseModule.storeElement(file)
+  console.log("File upload to mongoose database")
+  res.redirect('/file')
 })
 
 app.get('/praxel', (req, res) => res.render("praxel.ejs", {apa: ["burgare", "cheeseburgarge", "äppel"], images: ["albin.png", "gabbe.png", "obama.png", "stefan.png", "TomasHappy.png"]}))
+
