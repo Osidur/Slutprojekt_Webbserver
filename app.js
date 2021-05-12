@@ -1,5 +1,5 @@
 const express = require('express')
-const databaseModule = require('./databaseModule.js')
+const databaseModule = require('./databaseModule')
 const UserRegisterModel = require('./UserRegisterModel')
 const app = express()
 const port = 3000
@@ -26,6 +26,7 @@ app.post('/login', function (req, res) {
   console.log("Log in info for user")
   console.log(req.body.username);
   console.log(req.body.userpassword);
+  console.log(" ")
 res.redirect('/');
 })
 
@@ -38,7 +39,8 @@ app.post('/register', function (req, res) {
     console.log(req.body.userpassword);
     console.log(" ")
     UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
-  res.redirect('/');
+    databaseModule.storeElement(user)
+  //res.redirect('/');
 })
 
 app.get('/praxel', (req, res) => res.render("praxel.ejs", {apa: ["burgare", "cheeseburgarge", "äppel"], images: ["albin.png", "gabbe.png", "obama.png", "stefan.png", "TomasHappy.png"]}))

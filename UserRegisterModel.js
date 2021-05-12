@@ -1,4 +1,4 @@
-const mongoos = require("mongoose")
+const mongoose = require("mongoose")
 
 const userRegisterSchema = new mongoose.Schema({
     name: String,
@@ -8,13 +8,13 @@ const userRegisterSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userRegisterSchema)
 
-exports.registerUser = function (inName, inMail, inPassword) {
-    var user = User({
+exports.registerUser = (inName, inMail, inPassword) => {
+    var user = new User({
         name: inName,
         email: inMail,
         password: inPassword
     })
-    user.save()
+    return user
 }
 
 exports.getUser = async function (uName) {
