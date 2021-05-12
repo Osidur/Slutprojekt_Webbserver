@@ -1,14 +1,14 @@
 const mongoos = require("mongoose")
 
-const userSchema = new mongoose.Schema({
+const userRegisterSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String
 })
 
-const User = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userRegisterSchema)
 
-exports.saveUser = function (inName, inMail, inPassword) {
+exports.registerUser = function (inName, inMail, inPassword) {
     var user = User({
         name: inName,
         email: inMail,
@@ -18,5 +18,5 @@ exports.saveUser = function (inName, inMail, inPassword) {
 }
 
 exports.getUser = async function (uName) {
-    return await NamnLista.find({})
+    return await User.findOne({username: Uname})
 }

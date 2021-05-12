@@ -1,4 +1,6 @@
 const express = require('express')
+const databaseModule = require('./databaseModule.js')
+const UserRegisterModel = require('./UserRegisterModel')
 const app = express()
 const port = 3000
 const staticDir = __dirname + "\\static\\"
@@ -21,10 +23,22 @@ app.get('/about', (req, res) => res.render("about.ejs"))
 app.get('/login', (req, res) => res.render("login.ejs"))
 
 app.post('/login', function (req, res) {
+  console.log("Log in info for user")
+  console.log(req.body.username);
+  console.log(req.body.userpassword);
+res.redirect('/');
+})
+
+app.get('/register', (req, res) => res.render("register.ejs"))
+
+app.post('/register', function (req, res) {
+  console.log("Register info for new user")
     console.log(req.body.useremail);
     console.log(req.body.username);
     console.log(req.body.userpassword);
+    console.log(" ")
+    UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
   res.redirect('/');
 })
 
-app.get('/praxel', (req, res) => res.render("praxel.ejs", {apa: ["burgare", "cheeseburgarge", "äppel"]}))
+app.get('/praxel', (req, res) => res.render("praxel.ejs", {apa: ["burgare", "cheeseburgarge", "äppel"], images: ["albin.png", "gabbe.png", "obama.png", "stefan.png", "TomasHappy.png"]}))
