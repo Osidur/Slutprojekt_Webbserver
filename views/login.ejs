@@ -31,7 +31,7 @@
                 <a class="nav-link" href="/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Forum</a>
+                <a class="nav-link" href="/forum">Forum</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
@@ -40,23 +40,26 @@
                 <a class="nav-link" href="/praxel">Praxel</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link active" aria-current="page" href="#">Login</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <div class="container">
-          <div class="row">
-              <div class="col"></div>
-              <div class="col">
-                  <div class="container-fluid">
-                      FORUM data loaded with vue from server
-                  </div>
-              </div>
-              <div class="col"></div>
-              <div class="col"></div>
+      <form action="/login" method="POST" class="position-absolute top-50 start-50 translate-middle">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="useremail" class="form-control">
           </div>
-      </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="username" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="userpassword" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 </body>
 </html>
