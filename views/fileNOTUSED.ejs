@@ -66,7 +66,7 @@
                 <p class="card-text">Please don't break my website with weird files.</p>
                 <form action="/file" method="POST">
                     <div class="input-group mb-3">
-                        <input type="file" name="userfileupload" class="form-control" id="inputGroupFile01">
+                        <input type="file" enctype=”multipart/form-data” name="userfileupload" class="form-control" id="inputGroupFile01">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit file</button>
                 </form>

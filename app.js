@@ -41,17 +41,18 @@ app.post('/register', function (req, res) {
     console.log(" ")
     let user = UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
     databaseModule.storeElement(user)
-  res.redirect('/');
+  res.redirect('/home');
 })
 
-app.get('/file', (req, res) => res.render("file.ejs"))
+//this code was an attempt at allowing users to upload files to the database.
+/*app.get('/file', (req, res) => res.render("file.ejs"))
 
 app.post('/file', function (req, res) {
   let file = FileUploadModel.fileUpload(req.body.userfileupload)
   databaseModule.storeElement(file)
   console.log("File upload to mongoose database")
-  res.redirect('/file')
 })
+*/
 
 app.get('/praxel', (req, res) => res.render("praxel.ejs", {apa: ["burgare", "cheeseburgarge", "äppel"], images: ["albin.png", "gabbe.png", "obama.png", "stefan.png", "TomasHappy.png"]}))
 
