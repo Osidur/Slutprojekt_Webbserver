@@ -18,5 +18,5 @@ exports.registerUser = (inName, inMail, inPassword) => {
 }
 
 exports.getUser = async function (uName) {
-    return await User.findOne({username: Uname})
+    return await User.findOne({username: uName})
 }

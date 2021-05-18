@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcryptjs')
 const databaseModule = require('./databaseModule')
 const UserRegisterModel = require('./UserRegisterModel')
 const FileUploadModel = require('./FileUploadModel')
@@ -23,23 +24,32 @@ app.get('/about', (req, res) => res.render("about.ejs"))
 
 app.get('/login', (req, res) => res.render("login.ejs"))
 
-app.post('/login', function (req, res) {
+app.post('/login', async function (req, res) {
   console.log("Log in info for user")
   console.log(req.body.username);
   console.log(req.body.userpassword);
+  const user = await UserRegisterModel.getUser(req.body.username);
+  await bcrypt.compare(req.body.userpassword, user.password, (err, success) => {
+    if (err) {
+      console.log(err)
+    }
+    if (success) console.log("success");
+    else console.log("fail");
+  })
   console.log(" ")
 res.redirect('/');
 })
 
 app.get('/register', (req, res) => res.render("register.ejs"))
 
-app.post('/register', function (req, res) {
+app.post('/register', async function (req, res) {
   console.log("Register info for new user")
     console.log(req.body.useremail);
     console.log(req.body.username);
-    console.log(req.body.userpassword);
+    const hashedPassword = await bcrypt.hash(req.body.userpassword, 10)
+    console.log(hashedPassword);
     console.log(" ")
-    let user = UserRegisterModel.registerUser(req.body.useremail, req.body.username, req.body.userpassword)
+    let user = UserRegisterModel.registerUser(req.body.username, req.body.useremail, hashedPassword)
     databaseModule.storeElement(user)
   res.redirect('/home');
 })
