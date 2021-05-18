@@ -20,25 +20,17 @@ app.get('/home', (req, res) => res.render("home.ejs"))
 
 app.get('/forum', (req, res) => res.render("forum.ejs"))
 
+app.post('/forum', async function (req, res) {
+  console.log("Forum post from user")
+    console.log(req.body.forumpost);
+    let post = req.body.forumpost;
+    databaseModule.storeElement(post)
+  res.redirect('/forum');
+})
+
 app.get('/about', (req, res) => res.render("about.ejs"))
 
-app.get('/login', (req, res) => res.render("login.ejs"))
 
-app.post('/login', async function (req, res) {
-  console.log("Log in info for user")
-  console.log(req.body.username);
-  console.log(req.body.userpassword);
-  const user = await UserRegisterModel.getUser(req.body.username);
-  await bcrypt.compare(req.body.userpassword, user.password, (err, success) => {
-    if (err) {
-      console.log(err)
-    }
-    if (success) console.log("success");
-    else console.log("fail");
-  })
-  console.log(" ")
-res.redirect('/');
-})
 
 app.get('/register', (req, res) => res.render("register.ejs"))
 
@@ -52,6 +44,24 @@ app.post('/register', async function (req, res) {
     let user = UserRegisterModel.registerUser(req.body.username, req.body.useremail, hashedPassword)
     databaseModule.storeElement(user)
   res.redirect('/home');
+})
+
+app.get('/login', (req, res) => res.render("login.ejs"))
+
+app.post('/login', async function (req, res) {
+  console.log("Log in info for user")
+  console.log(req.body.username);
+  console.log(req.body.userpassword);
+  let user = await UserRegisterModel.getUser(req.body.username);
+  await bcrypt.compare(req.body.userpassword, user.password, (err, success) => {
+    if (err) {
+      console.log(err)
+    }
+    if (success) console.log("success");
+    else console.log("fail");
+  })
+  console.log(" ")
+res.redirect('/');
 })
 
 //this code was an attempt at allowing users to upload files to the database.

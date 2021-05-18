@@ -8,8 +8,8 @@ db.once('open', function() {
     console.log("connected to mongoose database")
 })
 
-exports.storeElement = (element) => {
-    element.save(()=>{
+exports.storeElement = async (element) => {
+    await element.save(()=>{
         console.log("successfully saved element in mongoose database")
     })
 }
