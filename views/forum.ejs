@@ -57,25 +57,40 @@
     </div>
   </nav>
 
-  <div class="card position-absolute top-50 start-50 translate-middle" style="width: 18rem;">
-    <img src="stefan.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <form action="/forum" method="POST" class="">
-        <h1>Write forum post</h1>
-        <div class="mb-3">
-          <textarea rows="20" cols="20" type="text" name="forumpost" class="form-control"
-            style="height: 100px;"></textarea>
+  <div class="d-flex flex-row bd-highlight mb-3 flex-wrap justify-content-evenly">
+    <div class="p-2 bd-highlight" style="width: 18rem;">
+      <% var reversedisplayposts = displayposts.reverse() %> 
+      <% for( let i = 0; i < reversedisplayposts.length; i++ ) { %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> <%=reversedisplayposts[i].name%> </h5>
+            <p> <%=reversedisplayposts[i].date%> </p>
+            <p class="card-text"> <%=reversedisplayposts[i].text%>  </p>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" name="username" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" name="userpassword" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign and Post</button>
-      </form>
+      <% } %>
+    </div>
+
+    <div class="p-2 bd-highlight" style="width: 18rem;">
+      <img src="stefan.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <form action="/forum" method="POST" class="">
+          <h1>Write forum post</h1>
+          <div class="mb-3">
+            <textarea rows="20" cols="20" type="text" name="forumpost" class="form-control"
+              style="height: 100px;"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="username" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="userpassword" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Sign and Post</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>
