@@ -59,13 +59,12 @@
 
   <div class="d-flex flex-row bd-highlight mb-3 flex-wrap justify-content-evenly">
     <div class="p-2 bd-highlight" style="width: 18rem;">
-      <% var reversedisplayposts = displayposts.reverse() %> 
-      <% for( let i = 0; i < reversedisplayposts.length; i++ ) { %>
+      <% for( let i = displayposts.length - 1; i >= 0; i-- ) { %>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title"> <%=reversedisplayposts[i].name%> </h5>
-            <p> <%=reversedisplayposts[i].date%> </p>
-            <p class="card-text"> <%=reversedisplayposts[i].text%>  </p>
+            <h5 class="card-title"> <%=displayposts[i].name%> </h5>
+            <p> <%=displayposts[i].date%> </p>
+            <p class="card-text"> <%=displayposts[i].text%>  </p>
           </div>
         </div>
       <% } %>

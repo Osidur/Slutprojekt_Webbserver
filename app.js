@@ -34,13 +34,13 @@ app.post('/forum', async function (req, res) {
   console.log(req.body.userpassword);
 
   //checks if the user exists
-  let foundUser = UserRegisterModel.getUser(req.body.username);
-  if (!founduser) {
+  let founduser = await UserRegisterModel.getUser(req.body.username);
+  if (founduser) {
     //founduser is true and the normal postlogin code will be executed
 
     //checks if the password is correct
     let user = await UserRegisterModel.getUser(req.body.username);
-    await bcrypt.compare(req.body.userpassword, user.password, (err, success) => {
+    await bcrypt.compare(req.body.userpassword, user.password, async (err, success) => {
         //if some sort of error occurs
         //not including wrong password
       if (err) {
@@ -58,7 +58,10 @@ app.post('/forum', async function (req, res) {
         let userpost = UserPostModel.userPost(req.body.username, req.body.forumpost, postdate)
         databaseModule.storeElement(userpost)
         //renders the forum page again which will now have the new post
-        res.render("forum.ejs");
+        const displayposts = await UserPostModel.getAllUserPosts()
+        res.render("forum.ejs", {
+          displayposts: displayposts,
+        })
       }
       //if password is wrong
       else {
@@ -69,7 +72,6 @@ app.post('/forum', async function (req, res) {
     res.render("register.ejs", {
       answer: ["Please create an account before trying to post or log in"]})
   }
-}
 })
 
 //i dont know where this was
@@ -90,8 +92,10 @@ app.post('/register', async function (req, res) {
   //this might be fixed thanks to niklas who said: "uuhhh this bad, fix the bad"
   //var compareuser = UserRegisterModel.getUser();
   //let foundUser = req.body.email === UserRegisterModel.getUser.email;
-  let foundUser = UserRegisterModel.getUser(req.body.username);
-  if (!foundUser) {
+  const foundUser = await UserRegisterModel.getUser(req.body.username);
+  console.log(foundUser)
+  if (foundUser) {
+    console.log("Username already exists... Redirecting client...")
     res.render("register.ejs", {
       answer: ["Username already exists"]
     })
